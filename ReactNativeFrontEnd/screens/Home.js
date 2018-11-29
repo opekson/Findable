@@ -1,16 +1,31 @@
 import React from 'react';
 import styles from '../styles';
+import { connect } from 'react-redux';
+import { login } from '../redux/actions';
 
 import { Text, View } from 'react-native';
 
 class Home extends React.Component {
+  state = {}
+
+  componentWillMount() {
+    this.props.dispatch(login('dynamic'))
+  }
+
   render() {
     return (
       <View>
-        <Text>Home</Text>
+        <Text>{this.props.user}</Text>
       </View>
     )
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+};
+
+export default connect(mapStateToProps)(Home);
+

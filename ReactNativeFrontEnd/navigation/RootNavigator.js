@@ -1,8 +1,8 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import TabNavigator from './TabNavigator';
 
-const RootStackNavigator =  StackNavigator(
+const RootStackNavigator =  createStackNavigator(
   {
     Main: {
       screen: TabNavigator
