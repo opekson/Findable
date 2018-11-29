@@ -4,6 +4,8 @@
     "slug": "ReactNativeFrontEnd",
     "privacy": "public",
     "sdkVersion": "31.0.0",
+    "FaceBookAppID": "352852475279355",
+    "facebookDisplayName": "Findable",
     "platforms": [
       "ios",
       "android"
