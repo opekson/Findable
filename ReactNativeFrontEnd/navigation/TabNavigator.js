@@ -2,9 +2,9 @@ import React from 'react';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import Matches from '../screens/Matches';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
-export default createBottomTabNavigator(
+export default createMaterialTopTabNavigator(
   {
     Profile: {
       screen: Profile,
@@ -30,14 +30,19 @@ export default createBottomTabNavigator(
     navigationOptions:{
       header: null
     },
-    tabBarPosition: 'bottom',
+    tabBarPosition: 'top',
     initialRouteName: 'Home',
     animationEnabled: true,
     swipeEnabled: true,
     tabBarOptions: {
+      showLabel: true,
       style: {
-        height: 100,
-        backgroundColor: '#fff'
+        height: 50,
+        backgroundColor: '#008000'
+      },
+      indicatorStyle: {
+        borderBottomColor: '#fff',
+        borderBottomWidth: 1,
       }
     }
   }
