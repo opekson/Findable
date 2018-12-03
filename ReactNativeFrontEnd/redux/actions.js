@@ -4,6 +4,7 @@ import aws from '../config/aws';
 import { ImagePicker } from 'expo';
 import { RNS3 } from 'react-native-aws3';
 
+
 export function login(user){
   return function(dispatch){
 		let params = {
@@ -34,30 +35,11 @@ export function login(user){
   }
 }
 
-async function alertIfRemoteNotificationsDisabledAsync() {
-  const { Permissions } = Expo;
-  const { status } = await Permissions.getAsync(Permissions.CAMERA_ROLL);
-  if (status !== 'granted') {
-    alert('Worked')
-  }
-}
-
-pickImage = async () => {
-  const result = await ImagePicker.launchImageLibraryAsync({
-    allowsEditing: true,
-    aspect: [4, 3],
-  });
-
-  if (!result.cancelled) {
-    this.onChangeText('pictureUrl', result.uri);
-  }
-};
-
 export function uploadImages(images){
 	return function(dispatch){
-		ImagePicker.launchImageLibraryAsync({ allowsEditing: true }).then(function(result){
+		ImagePicker.launchImageLibraryAsync({ allowsEditing: false }).then(function(result){
 
-		  var array = images
+		  let array = images
 		  if(result.uri != undefined){
 		    const file = {
 		      uri: result.uri,
@@ -86,3 +68,6 @@ export function uploadImages(images){
 		})
 	}
 }
+
+
+

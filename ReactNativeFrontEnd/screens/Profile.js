@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from '../styles';
 import { connect } from 'react-redux';
+import { Permissions } from 'expo';
 import { uploadImages } from '../redux/actions';
-
 import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { showImagePicker } from 'react-native-image-picker';
 
 class Profile extends React.Component {
   state = {}
@@ -31,10 +32,22 @@ class Profile extends React.Component {
   }
 };
 
+
+
 function mapStateToProps(state) {
   return {
     user: state.user
   }
 };
+
+async function enableCameraRoll() {
+  const permission =  await Permissions.getAsync(Permissions.CAMERA_ROLL);
+  if (permission.status !== 'granted') {
+    const newPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    if (newPermission.status === 'granted') {
+      alert('Camera access granted')
+    }
+  }
+}
 
 export default connect(mapStateToProps)(Profile);
