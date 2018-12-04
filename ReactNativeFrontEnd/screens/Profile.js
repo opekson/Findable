@@ -45,7 +45,7 @@ class Profile extends React.Component {
               <Ionicons name="ios-add" size={75}  style={styles.color} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.bold}>About</Text>
+          <Text style={styles.bold}>Previous Experience(s)</Text>
           <TextInput
             style={styles.textInput}
             multiline={true}

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   color: {
-  	color: '#df4723'
+  	color: '#008000'
   },
   profilePic:{
     width: 90,
@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
   button: {
 	  borderRadius: 15,
 	  borderWidth: 1,
-	  borderColor: '#df4723',
+	  borderColor: '#008000',
 	  textAlign: 'center',
-	  color: '#df4723',
+	  color: '#000',
 	  padding: 15,
 	  margin: 15,
 	  fontSize: 18,
@@ -69,6 +69,19 @@ const styles = StyleSheet.create({
   card: {
     width: deviceWidth*.9,
     height: deviceHeight*.7
+  },
+  cardDescription: {
+    padding: 15,
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+  cardInfo: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
+  },
+  aboutMe: {
+    marginLeft: 10,
   }
 })
 

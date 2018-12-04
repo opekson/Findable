@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from '../styles'
+import * as firebase from 'firebase';
 import { connect } from 'react-redux';
 import { getCards } from '../redux/actions';
 import SwipeCards from 'react-native-swipe-cards';
+import Cards from '../components/Cards';
+import NoCards from '../components/NoCards';
 
 import { 
   Text, 
@@ -10,40 +13,12 @@ import {
   Image
 } from 'react-native';
 
-class Card extends React.Component {
-  render() {
-    return (
-      <View>
-        <Image style={styles.card} source={{uri: this.props.images[1]}} />
-        <Text>{this.props.name}</Text>
-      </View>
-    )
-  }
-}
-
-class NoMoreCards extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>No more cards</Text>
-      </View>
-    )
-  }
-}
 
 class Home extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      cards: [
-        {name: 'fran', image: 'https://media.giphy.com/media/GfXFVHUzjlbOg/giphy.gif'},
-        {name: 'jackie', image: 'https://media.giphy.com/media/irTuv1L1T34TC/giphy.gif'},
-        {name: 'phil', image: 'https://media.giphy.com/media/LkLL0HJerdXMI/giphy.gif'},
-        {name: 'jacks', image: 'https://media.giphy.com/media/fFBmUMzFL5zRS/giphy.gif'},
-        {name: 'mellow', image: 'https://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif'},
-        {name: 'frank', image: 'https://media.giphy.com/media/7r4g8V2UkBUcw/giphy.gif'},
-        {name: 'timmmay', image: 'https://media.giphy.com/media/K6Q7ZCdLy8pCE/giphy.gif'},
-      ]
+
     };
   }
 
@@ -52,25 +27,23 @@ class Home extends React.Component {
   }
 
   handleYup (card) {
-    console.log(`Yup for ${card.name}`)
+    firebase.database.ref('cards' + this.props.user.id + '/swipes').update({ [card.id]: true });
   }
   handleNope (card) {
-    console.log(`Nope for ${card.name}`)
+    firebase.database.ref('cards' + this.props.user.id + '/swipes').update({ [card.id]: false });
   }
-  handleMaybe (card) {
-    console.log(`Maybe for ${card.name}`)
-  }
+
   render() {
     return (
       <SwipeCards
         cards={this.props.cards}
         stack={false}
-        renderCard={(cardData) => <Card {...cardData} />}
-        renderNoMoreCards={() => <NoMoreCards />}
+        renderCard={(cardData) => <Cards {...cardData} />}
+        renderNoMoreCards={() => <NoCards />}
         showYup={false}
         showNope={false}
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
+        handleYup={this.handleYup.bind(this)}
+        handleNope={this.handleNope.bind(this)}
         handleMaybe={this.handleMaybe}
         hasMaybeAction={false}/>
     )
@@ -80,7 +53,8 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     loggedIn: state.loggedIn,
-    cards: state.cards
+    cards: state.cards,
+    user: state.user
   };
 }
 
