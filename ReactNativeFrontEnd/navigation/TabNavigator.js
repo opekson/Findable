@@ -33,7 +33,7 @@ export default createMaterialTopTabNavigator(
     tabBarPosition: 'top',
     initialRouteName: 'Home',
     animationEnabled: true,
-    swipeEnabled: true,
+    swipeEnabled: false,
     tabBarOptions: {
       showLabel: true,
       style: {

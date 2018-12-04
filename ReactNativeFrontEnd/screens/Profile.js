@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from '../styles'
 import { connect } from 'react-redux';
-import { Ionicons } from '@expo/vector-icons';
 import { Permissions } from 'expo';
-import { uploadImages, deleteImage, updateAbout, logout } from '../redux/actions'
+import { Ionicons } from '@expo/vector-icons';
+import { uploadImages, deleteImage, updateAbout, logout } from 
+'../redux/actions'
 
 import { 
   Text, 
@@ -21,8 +22,8 @@ class Profile extends React.Component {
   }
 
   addImage(){
-    enableCameraRoll();
     this.props.dispatch(uploadImages(this.props.user.images))
+    enableCameraRoll();
   }
 
   render() {
@@ -34,9 +35,9 @@ class Profile extends React.Component {
             <Text style={[styles.center, styles.bold]} >{this.props.user.name}</Text>
           </View>
           <View style={styles.imgRow}>
-            {this.props.user.images && this.props.user.images.map((uri, key)=>{
+            {this.props.user.images.map((uri, key)=>{
               return (
-                <TouchableOpacity key={{key}} onPress={this.deleteImage.bind({self: this, key: key })} >
+                <TouchableOpacity key={{uri}} onPress={this.deleteImage.bind({self: this, key: key })} >
                   <Image style={styles.img} source={{uri: uri}} />
                 </TouchableOpacity>
               );
@@ -76,5 +77,6 @@ async function enableCameraRoll() {
     }
   }
 }
+
 
 export default connect(mapStateToProps)(Profile);
