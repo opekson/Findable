@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from '../styles';
+import styles from '../styles'
 import { connect } from 'react-redux';
-import { login } from '../redux/actions';
 
-import { Text, View, Alert } from 'react-native';
+import { 
+  Text, 
+  View,
+} from 'react-native';
 
 class Home extends React.Component {
   state = {}
 
-  componentWillMount() {
-
-  }
+  componentWillMount() {} 
 
   render() {
     return (
@@ -24,8 +24,7 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     loggedIn: state.loggedIn
-  }
-};
+  };
+}
 
 export default connect(mapStateToProps)(Home);
-
