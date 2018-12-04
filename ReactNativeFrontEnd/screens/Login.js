@@ -7,15 +7,17 @@ import * as firebase from 'firebase';
 import firebaseConfig from '../config/firebase';
 firebase.initializeApp(firebaseConfig);
 
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Alert} from 'react-native';
 
 class Login extends React.Component {
   constructor(props){
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {
+
+    }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         this.props.dispatch(login(user))
@@ -48,9 +50,9 @@ class Login extends React.Component {
       )
     } else {
       return (
-        <View style={styles.container}>
-          <TouchableOpacity onPress={this.login.bind(this)}>
-            <Text>Login</Text>
+        <View style={[styles.container,styles.center]}>
+          <TouchableOpacity style={styles.login} onPress={this.login.bind(this)}>
+            <Text style={styles.facebook}>Login with Facebook </Text>
           </TouchableOpacity>
         </View>
       )

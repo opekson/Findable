@@ -10,11 +10,10 @@ import {
 
 class Cards extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       num: 0
-    }
-    this.nextPhoto = this.nextPhoto.bind(this);
+    };
   }
 
   nextPhoto(){
@@ -30,13 +29,13 @@ class Cards extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={() => nextPhoto()}>
+      <TouchableOpacity onPress={() => this.nextPhoto()}>
         <ImageBackground style={styles.card} 
         source={{uri: this.props.images[this.state.num]}}>
           <View style={styles.cardDescription}>
             <View style={styles.cardInfo}>
               <Text style={styles.bold}>{this.props.name}</Text>
-              <Text>{this.props.aboutMe}</Text>
+              <Text style={styles.aboutMe}>{this.props.aboutMe}</Text>
             </View>
           </View>
         </ImageBackground>

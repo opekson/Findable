@@ -45,7 +45,7 @@ export function uploadImages(images){
 	return function(dispatch){
 		ImagePicker.launchImageLibraryAsync({ allowsEditing: false }).then(function(result){
 
-		  var array = images
+		  let array = images
 		  if(result.uri != undefined){
 		    const file = {
 		      uri: result.uri,
@@ -55,8 +55,8 @@ export function uploadImages(images){
 
 		    const options = {
 		      keyPrefix: "uploads/",
-		      bucket: "tinderexpo",
-		      region: "us-east-1",
+		      bucket: "findableimagebucket",
+		      region: "us-west-1",
 		      accessKey: aws.accessKey,
 		      secretKey: aws.secretKey,
 		      successActionStatus: 201
@@ -82,7 +82,7 @@ export function deleteImage(images, key){
       '',
       [
         {text: 'Ok', onPress: () => {
-          var array = images
+          let array = images
           array.splice(key, 1)
     			dispatch({ type: 'UPLOAD_IMAGES', payload: array });
           firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/images').set(array);
@@ -101,4 +101,18 @@ export function updateAbout(value){
 			firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ aboutMe: value });
     }, 3000);
   }
+}
+
+export function getCards(){
+	return function(dispatch){
+		firebase.database().ref('cards').once('value', (snap) => {
+			let items = [];
+			snap.forEach((child) => {
+				item = child.val();
+				item.id = child.key;
+				items.push(item);
+			});
+			dispatch({ type: 'GET_CARDS', payload: items });
+		})
+	}
 }
