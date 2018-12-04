@@ -37,7 +37,7 @@ class Profile extends React.Component {
           <View style={styles.imgRow}>
             {this.props.user.images.map((uri, key)=>{
               return (
-                <TouchableOpacity key={{uri}} onPress={this.deleteImage.bind({self: this, key: key })} >
+                <TouchableOpacity key={key} onPress={this.deleteImage.bind({self: this, key: key })} >
                   <Image style={styles.img} source={{uri: uri}} />
                 </TouchableOpacity>
               );

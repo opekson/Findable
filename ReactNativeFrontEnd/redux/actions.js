@@ -45,7 +45,7 @@ export function uploadImages(images){
 	return function(dispatch){
 		ImagePicker.launchImageLibraryAsync({ allowsEditing: false }).then(function(result){
 
-		  var array = images
+		  let array = images
 		  if(result.uri != undefined){
 		    const file = {
 		      uri: result.uri,
@@ -55,7 +55,7 @@ export function uploadImages(images){
 
 		    const options = {
 		      keyPrefix: "uploads/",
-		      bucket: "tinderexpo",
+		      bucket: "findableimages",
 		      region: "us-east-1",
 		      accessKey: aws.accessKey,
 		      secretKey: aws.secretKey,
