@@ -7,13 +7,20 @@ const deviceHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   login: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 15,
+	  borderWidth: 1,
+	  borderColor: '#4267b2',
+    backgroundColor: '#4267b2',
+    padding: 20,
+	  fontSize: 18,
+    fontWeight: 'bold',
+  },
+  facebook:{
+    color: '#fff'
   },
   color: {
   	color: '#008000'
@@ -22,6 +29,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     marginTop: 20,
+    marginLeft: 50,
   	borderRadius: 45,
   	backgroundColor: '#fff',
     justifyContent: 'center'
@@ -44,6 +52,19 @@ const styles = StyleSheet.create({
     padding: 10,
 		paddingLeft: 40,
   },
+  matchImgRow:{
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    padding: 15,
+  },
+  matchPic: {
+    width: 90,
+    height: 90,
+    margin: 10,
+  	borderRadius: 45,
+  	backgroundColor: '#fff',
+    justifyContent: 'center'
+  },
   textInput: {
     width: deviceWidth,
     padding: 15,
@@ -60,7 +81,7 @@ const styles = StyleSheet.create({
 	  borderWidth: 1,
 	  borderColor: '#008000',
 	  textAlign: 'center',
-	  color: '#000',
+	  color: '#008000',
 	  padding: 15,
 	  margin: 15,
 	  fontSize: 18,
