@@ -1,19 +1,16 @@
 import React from 'react';
 import styles from '../styles'
 import * as firebase from 'firebase';
-import { sendNotification } from '../redux/actions';
+import { sendNotification } from '../redux/actions'
 import { connect } from 'react-redux';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat } from 'react-native-gifted-chat'
 
 class Chat extends React.Component {
-  constructor(props){
-    super(props);
-      this.state = {
-        messages: [],
-      }
+  state = {
+    messages: [],
   }
 
-  componentDidMount() {
+  componentWillMount() {
     firebase.database().ref('cards/' + this.props.user.id + '/chats/' + this.props.navigation.state.params.user.id).on('value', (snap) => {
       let items = [];
       snap.forEach((child) => {
@@ -27,7 +24,13 @@ class Chat extends React.Component {
   }
 
   onSend(messages = []) {
-    // this.props.dispatch(sendNotification(this.props.navigation.state.params.user.id, messages[0].user.name, messages[0].text))
+    this.props.dispatch(
+      sendNotification(
+        this.props.navigation.state.params.user.id, 
+        messages[0].user.name, 
+        messages[0].text
+      )
+    )
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))

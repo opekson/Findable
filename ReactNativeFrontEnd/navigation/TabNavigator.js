@@ -1,28 +1,34 @@
 import React from 'react';
+import styles from '../styles';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import Matches from '../screens/Matches';
+import { Ionicons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import { Image } from 'react-native';
 
 export default createMaterialTopTabNavigator(
   {
     Profile: {
       screen: Profile,
       navigationOptions: {
-        tabBarLabel: 'Profile'
-      }
+        tabBarLabel: ' ',
+        tabBarIcon: <Ionicons style={{marginTop: 40, width: 50, height: 50}} color={'#000'} name={'ios-person'} size={50}/>
+      },
     },
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: 'Home'
+        tabBarLabel: ' ',
+        tabBarIcon: <Image style={{marginTop: 40, width: 60, height: 60}} source={require('../assets/findable-icon.png')} />
       }
     },
     Matches: {
       screen: Matches,
       navigationOptions: {
-        tabBarLabel: 'Matches'
-      }
+        tabBarLabel: ' ',
+        tabBarIcon: <Ionicons style={{marginTop: 40, width: 50, height: 50}}  color={'#000'} name={'ios-chatbubbles' } size={50}/>
+      },
     }
   },
 
@@ -34,16 +40,15 @@ export default createMaterialTopTabNavigator(
     initialRouteName: 'Home',
     animationEnabled: true,
     swipeEnabled: false,
+    showLabel: false,
     tabBarOptions: {
-      showLabel: true,
+      showIcon: true,
+      activeTintColor: '#FFC966',
+      inactiveTintColor: 'gray',
       style: {
-        height: 50,
-        backgroundColor: '#008000'
+        height: 80,
+        backgroundColor: '#FFC966'
       },
-      indicatorStyle: {
-        borderBottomColor: '#fff',
-        borderBottomWidth: 1,
-      }
     }
   }
 );

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   color: {
-  	color: '#008000'
+  	color: '#FFC966'
   },
   profilePic:{
     width: 90,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
     flexDirection: 'row',
     padding: 10,
-		paddingLeft: 40,
+		paddingLeft: 80,
   },
   matchImgRow:{
     flexWrap: 'wrap',
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textInput: {
-    width: deviceWidth*.9,
+    width: deviceWidth*.92,
     padding: 15,
     backgroundColor: '#fff',
     height: 100
   },
   textShownName: {
-    width: deviceWidth*.7,
+    width: deviceWidth*.6,
     height: 20,
     backgroundColor: '#fff',
     textAlign: 'center'
@@ -85,9 +85,10 @@ const styles = StyleSheet.create({
   button: {
 	  borderRadius: 15,
 	  borderWidth: 1,
-	  borderColor: '#008000',
+	  borderColor: '#FFC966',
 	  textAlign: 'center',
-	  color: '#008000',
+    color: '#000',
+    backgroundColor: '#FFC966',
 	  padding: 15,
 	  margin: 15,
 	  fontSize: 18,
@@ -109,6 +110,10 @@ const styles = StyleSheet.create({
   },
   aboutMe: {
     marginLeft: 10,
+  },
+  border: {
+    borderTopColor: '#000',
+    borderTopWidth: 1
   }
 })
 
