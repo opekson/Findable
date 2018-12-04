@@ -5,6 +5,7 @@ import reducers from './redux/reducers';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+console.disableYellowBox = true
 
 const middleware = applyMiddleware(thunkMiddleware);
 const store = createStore(reducers, middleware);

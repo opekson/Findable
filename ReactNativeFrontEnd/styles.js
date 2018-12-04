@@ -66,11 +66,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textInput: {
-    width: deviceWidth,
+    width: deviceWidth*.9,
     padding: 15,
     backgroundColor: '#fff',
     height: 100
   },
+  textShownName: {
+    width: deviceWidth*.7,
+    height: 20,
+    backgroundColor: '#fff',
+    textAlign: 'center'
+  },  
   bold: {
     padding: 10,
     fontSize: 18,

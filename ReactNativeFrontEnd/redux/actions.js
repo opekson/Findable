@@ -103,6 +103,15 @@ export function updateAbout(value){
   }
 }
 
+export function updateShownName(value){
+	return function(dispatch){
+		dispatch({ type: 'UPDATE_SHOWNNAME', payload: value });
+    setTimeout(function(){  
+			firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ shownName: value });
+    }, 3000);
+  }
+}
+
 export function getCards(){
 	return function(dispatch){
 		firebase.database().ref('cards').once('value', (snap) => {

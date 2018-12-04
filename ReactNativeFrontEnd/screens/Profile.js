@@ -3,7 +3,7 @@ import styles from '../styles'
 import { connect } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { Permissions } from 'expo';
-import { uploadImages, deleteImage, updateAbout, logout } from '../redux/actions'
+import { uploadImages, deleteImage, updateAbout, logout, updateShownName } from '../redux/actions'
 
 import { 
   Text, 
@@ -33,6 +33,12 @@ class Profile extends React.Component {
             <Image style={styles.profilePic} source={{uri: this.props.user.images[0]} || this.props.user.photoUrl}/>
             <Text style={[styles.center, styles.bold]} >{this.props.user.name}</Text>
           </View>
+          <Text style={styles.bold}>Shown Name</Text>
+          <TextInput
+            style={styles.textShownName}
+            multiline={false}
+            onChangeText={(text) => this.props.dispatch(updateShownName(text))}
+            value={this.props.user.shownName}/>
           <View style={styles.imgRow}>
             {this.props.user.images && this.props.user.images.map((uri, key)=>{
               return (
@@ -51,7 +57,7 @@ class Profile extends React.Component {
             multiline={true}
             numberOfLines={5}
             onChangeText={(text) => this.props.dispatch(updateAbout(text))}
-            value={this.props.user.aboutMe}/>
+            value={this.props.user.aboutMe}/>            
         </View>
         <TouchableOpacity onPress={ () => this.props.dispatch(logout()) }>
           <Text style={ styles.button }>Logout</Text>
