@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from '../styles'
 import { connect } from 'react-redux';
-import { Permissions } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
-import { uploadImages, deleteImage, updateAbout, logout } from 
-'../redux/actions'
+import { uploadImages, deleteImage, updateAbout, logout } from '../redux/actions'
 
 import { 
   Text, 
@@ -23,7 +21,6 @@ class Profile extends React.Component {
 
   addImage(){
     this.props.dispatch(uploadImages(this.props.user.images))
-    enableCameraRoll();
   }
 
   render() {
@@ -31,7 +28,7 @@ class Profile extends React.Component {
       <ScrollView>
         <View style={[styles.container, styles.center]}>
           <View style={styles.container}>
-            <Image style={styles.img} source={{uri: this.props.user.photoUrl}}/>
+            <Image style={styles.profilePic} source={{uri: this.props.user.photoUrl}}/>
             <Text style={[styles.center, styles.bold]} >{this.props.user.name}</Text>
           </View>
           <View style={styles.imgRow}>
@@ -67,16 +64,5 @@ function mapStateToProps(state) {
     user: state.user
   };
 }
-
-async function enableCameraRoll() {
-  const permission =  await Permissions.getAsync(Permissions.CAMERA_ROLL);
-  if (permission.status !== 'granted') {
-    const newPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    if (newPermission.status === 'granted') {
-      alert('Camera access granted')
-    }
-  }
-}
-
 
 export default connect(mapStateToProps)(Profile);

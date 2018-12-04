@@ -10,7 +10,10 @@ firebase.initializeApp(firebaseConfig);
 import { Text, View, TouchableOpacity } from 'react-native';
 
 class Login extends React.Component {
-  state = {}
+  constructor(props){
+    super(props)
+    this.state = {}
+  }
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {

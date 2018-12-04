@@ -11,6 +11,15 @@ var styles = StyleSheet.create({
   color: {
   	color: '#df4723'
   },
+  profilePic:{
+    width: 90,
+    height: 90,
+    marginTop: 10,
+    marginLeft: 50,
+  	borderRadius: 45,
+  	backgroundColor: '#fff',
+    justifyContent: 'center'
+  },
   center: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -35,6 +44,7 @@ var styles = StyleSheet.create({
     height: 100
   },
   bold: {
+    padding: 10,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -48,25 +58,6 @@ var styles = StyleSheet.create({
 	  margin: 15,
 	  fontSize: 18,
 	  fontWeight: 'bold',
-  },
-  card: {
-    width: deviceWidth*.9,
-    height: deviceHeight*.75,
-    borderRadius: 50,
-  },
-  cardDescription: {
-    padding: 15,
-    justifyContent: 'flex-end',
-    flex: 1,
-  },
-  cardInfo: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
-  },
-  border: {
-    borderTopColor: '#bbb', 
-    borderTopWidth: 0.5, 
   },
 })
 

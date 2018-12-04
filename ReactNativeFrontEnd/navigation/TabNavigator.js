@@ -37,7 +37,7 @@ export default createMaterialTopTabNavigator(
     tabBarOptions: {
       showLabel: true,
       style: {
-        height: 50,
+        height: 75,
         backgroundColor: '#008000'
       },
       indicatorStyle: {
