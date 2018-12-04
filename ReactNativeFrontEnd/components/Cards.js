@@ -34,7 +34,7 @@ class Cards extends React.Component {
         source={{uri: this.props.images[this.state.num]}}>
           <View style={styles.cardDescription}>
             <View style={styles.cardInfo}>
-              <Text style={styles.bold}>{this.props.name}</Text>
+              <Text style={styles.bold}>{this.props.shownName || this.props.name }</Text>
               <Text style={styles.aboutMe}>{this.props.aboutMe}</Text>
             </View>
           </View>

@@ -5,6 +5,7 @@ export default reducers = (state = {
     id: '',
     photoUrl: '',
     name: '',
+    shownName: ' ',
     aboutMe: ' ',
     chats: ' ',
     geocode: ' ',
@@ -29,8 +30,17 @@ export default reducers = (state = {
     case 'UPDATE_ABOUT': {
       return { ...state, user: { ...state.user, aboutMe : action.payload } }
     }
+    case 'UPDATE_SHOWNNAME': {
+      return { ...state, user: { ...state.user, shownName : action.payload } }
+    }
     case 'GET_CARDS': {
       return { ...state, cards: action.payload }
+    }
+    case 'GET_LOCATION': {
+      return { ...state, user: { ...state.user, geocode : action.payload } }
+    }
+    case 'ALLOW_NOTIFICATIONS': {
+      return { ...state, user: { ...state.user, token : action.payload } }
     }
   }
   return state;

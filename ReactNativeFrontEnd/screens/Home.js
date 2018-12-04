@@ -23,7 +23,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(getCards());
+    this.props.dispatch(getCards(this.props.user.geocode));
   }
 
   handleYup (card) {
