@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles'
 import { connect } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
+import { Permissions } from 'expo';
 import { uploadImages, deleteImage, updateAbout, logout } from '../redux/actions'
 
 import { 
@@ -20,6 +21,7 @@ class Profile extends React.Component {
   }
 
   addImage(){
+    enableCameraRoll();
     this.props.dispatch(uploadImages(this.props.user.images))
   }
 
@@ -28,11 +30,11 @@ class Profile extends React.Component {
       <ScrollView>
         <View style={[styles.container, styles.center]}>
           <View style={styles.container}>
-            <Image style={styles.profilePic} source={{uri: this.props.user.photoUrl}}/>
+            <Image style={styles.profilePic} source={{uri: this.props.user.images[0]} || this.props.user.photoUrl}/>
             <Text style={[styles.center, styles.bold]} >{this.props.user.name}</Text>
           </View>
           <View style={styles.imgRow}>
-            {this.props.user.images.map((uri, key)=>{
+            {this.props.user.images && this.props.user.images.map((uri, key)=>{
               return (
                 <TouchableOpacity key={key} onPress={this.deleteImage.bind({self: this, key: key })} >
                   <Image style={styles.img} source={{uri: uri}} />
@@ -63,6 +65,16 @@ function mapStateToProps(state) {
   return {
     user: state.user
   };
+}
+
+async function enableCameraRoll() {
+  const permission =  await Permissions.getAsync(Permissions.CAMERA_ROLL);
+  if (permission.status !== 'granted') {
+    const newPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    if (newPermission.status === 'granted') {
+      alert('Camera access granted')
+    }
+  }
 }
 
 export default connect(mapStateToProps)(Profile);

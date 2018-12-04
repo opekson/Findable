@@ -1,12 +1,19 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-var Dimensions = require('Dimensions');
-var deviceWidth = Dimensions.get('window').width;
-var deviceHeight = Dimensions.get('window').height;
+const Dimensions = require('Dimensions');
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  login: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   color: {
   	color: '#df4723'
@@ -14,8 +21,7 @@ var styles = StyleSheet.create({
   profilePic:{
     width: 90,
     height: 90,
-    marginTop: 10,
-    marginLeft: 50,
+    marginTop: 20,
   	borderRadius: 45,
   	backgroundColor: '#fff',
     justifyContent: 'center'
@@ -29,13 +35,14 @@ var styles = StyleSheet.create({
   	width: 90,
   	height: 90,
   	borderRadius: 45,
-  	margin: 10,
-  	backgroundColor: '#fff',
+    margin: 10,
+    backgroundColor: '#fff',
   },
   imgRow: {
 		flexWrap: 'wrap',
-		flexDirection: 'row',
-		padding: 15,
+    flexDirection: 'row',
+    padding: 10,
+		paddingLeft: 40,
   },
   textInput: {
     width: deviceWidth,
@@ -59,6 +66,10 @@ var styles = StyleSheet.create({
 	  fontSize: 18,
 	  fontWeight: 'bold',
   },
+  card: {
+    width: deviceWidth*.9,
+    height: deviceHeight*.7
+  }
 })
 
 module.exports = styles
