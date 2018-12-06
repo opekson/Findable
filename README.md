@@ -8,5 +8,12 @@ An easy way for employers and job seekers to interact
 - Firbase 
 - AWS
 - AJAX and HTTP
-- Redux
 - Geohashing
+
+### Libraries used
+
+- react-redux
+- react-native-swipe-cards
+- react-native-gifted-chat
+- react-navigation
+- latlon-geohash
