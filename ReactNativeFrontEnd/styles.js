@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  background:{
+    backgroundColor: '#FFC966' 
+  },  
   login: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -18,6 +21,8 @@ const styles = StyleSheet.create({
     padding: 20,
 	  fontSize: 18,
     fontWeight: 'bold',
+    borderWidth: 1,
+    borderColor: '#000'
   },
   facebook:{
     color: '#fff'
@@ -96,7 +101,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: deviceWidth*.9,
-    height: deviceHeight*.7
+    height: deviceHeight*.7,
   },
   cardDescription: {
     padding: 15,

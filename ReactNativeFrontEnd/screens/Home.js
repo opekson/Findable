@@ -7,13 +7,6 @@ import SwipeCards from 'react-native-swipe-cards';
 import Cards from '../components/Cards';
 import NoCards from '../components/NoCards';
 
-import { 
-  Text, 
-  View,
-  Image
-} from 'react-native';
-
-
 class Home extends React.Component {
   constructor(props){
     super(props);
@@ -37,15 +30,15 @@ class Home extends React.Component {
   checkMatch(card){
     firebase.database().ref('cards/' + card.id + '/swipes/' + this.props.user.id).once('value', (snap) => {
       if(snap.val() == true){
-        let me = {
+        const me = {
           id: this.props.user.id,
           photoUrl: this.props.user.photoUrl,
-          name: this.props.user.name
+          name: this.props.user.shownName || this.props.user.name
         }
-        let user = {
+        const user = {
           id: card.id,
           photoUrl: card.photoUrl,
-          name: card.name
+          name: card.shownName || card.name
         }
         firebase.database().ref('cards/' + this.props.user.id + '/chats/' + card.id).set({ user:user });
         firebase.database().ref('cards/' + card.id + '/chats/' + this.props.user.id).set({ user:me })

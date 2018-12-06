@@ -53,7 +53,7 @@ export function uploadImages(images){
 		  if(result.uri != undefined){
 		    const file = {
 		      uri: result.uri,
-		      name: result.uri,
+					name: result.uri,
 		      type: "image/png"
 		    }
 

@@ -7,6 +7,6 @@ An easy way for employers and job seekers to interact
 - React Native
 - Firbase 
 - AWS
-- AJAX
+- AJAX and HTTP
 - Redux
 - Geohashing
