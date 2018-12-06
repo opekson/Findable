@@ -30,10 +30,11 @@ class Matches extends React.Component {
         <ScrollView>
           {this.state.chats.map((uri, key) => {
             return (
+              console.log(uri),
               <TouchableOpacity style={[styles.matchImgRow, styles.border]} key={key} 
               onPress={() => this.props.navigation.navigate("Chat", {user: uri.user})}
               >
-                <Image style={styles.matchPic} source={{ uri:  uri.user.photoUrl }} />
+                <Image style={styles.matchPic} source={{ uri:  uri.user.photoUrl  }} />
                 <Text style={[styles.bold, styles.center]}>
                 { uri.user.name} 
                 </Text> 
