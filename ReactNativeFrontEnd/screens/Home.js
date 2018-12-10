@@ -19,20 +19,25 @@ class Home extends React.Component {
     this.props.dispatch(getCards(this.props.user.geocode));
   }
 
-  handleYup (card) {
-    firebase.database().ref('cards/' + this.props.user.id + '/swipes').update({ [card.id]: true });
+  handleYup(card) {
+    firebase.database()
+    .ref('cards/' + this.props.user.id + '/swipes')
+    .update({ [card.id]: true });
     this.checkMatch(card);
   }
-  handleNope (card) {
+  handleNope(card) {
     firebase.database().ref('cards/' + this.props.user.id + '/swipes').update({ [card.id]: false });
   }
 
   checkMatch(card){
-    firebase.database().ref('cards/' + card.id + '/swipes/' + this.props.user.id).once('value', (snap) => {
+    firebase
+      .database()
+      .ref('cards/' + card.id + '/swipes/' + this.props.user.id)
+      .once('value', (snap) => {
       if(snap.val() == true){
         const me = {
           id: this.props.user.id,
-          photoUrl: this.props.user.photoUrl,
+          photoUrl: this.props.user.images[0] || this.props.user.photoUrl,
           name: this.props.user.shownName || this.props.user.name
         }
         const user = {
@@ -40,8 +45,13 @@ class Home extends React.Component {
           photoUrl: card.photoUrl,
           name: card.shownName || card.name
         }
-        firebase.database().ref('cards/' + this.props.user.id + '/chats/' + card.id).set({ user:user });
-        firebase.database().ref('cards/' + card.id + '/chats/' + this.props.user.id).set({ user:me })
+        firebase
+          .database()
+          .ref('cards/' + this.props.user.id + '/chats/' + card.id)
+          .set({ user:user });
+        firebase.database()
+        .ref('cards/' + card.id + '/chats/' + this.props.user.id)
+        .set({ user:me })
       }
     })
   }
